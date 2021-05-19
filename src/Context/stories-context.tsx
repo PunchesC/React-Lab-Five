@@ -5,11 +5,13 @@ import examples from "../model/examples"
 interface StoryContextValue {
     stories: Story[];
     addStory: (story: Story) => number;
+    
 } 
 
 const defaultValue: StoryContextValue ={
     stories: [],
     addStory: () => 0,
+   
 }
 
 export const StoryContext = createContext(defaultValue);
@@ -21,11 +23,14 @@ export function StoryContextProvider( {children }: {children: ReactNode}) {
         setStories([...stories,story]);
         return stories.length
     }
+    function storyIndex( story: Story ): number {
+      return stories.indexOf( story );
+  }
 
 
 
     return(
-        <StoryContext.Provider value={{stories, addStory}}>
+        <StoryContext.Provider value={{stories, addStory,}}>
             {children}
         </StoryContext.Provider>
     )

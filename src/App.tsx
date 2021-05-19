@@ -7,23 +7,10 @@ import Coke from'./Components/Pepsi'
 import {StoryContextProvider} from "./Context/stories-context";
 import {StoriesRoute} from "./Components/StoriesRoute"
 import ViewStoryRoute from "./Components/ViewStoryRoute"
+import CreateStoryRoute from './Components/CreateStoryRoute';
 function App() {
   return (
   
-    // <Router>
-    //   <StoryContextProvider>
-    //   <div className="App">
-    //   {" "}
-    //   <Switch>
-    //     <Route path="/stories/:num"></Route>
-    //     <ViewStoryRoute />
-    //     </Route>
-    //     </Switch>
-    //     <StoriesRoute />
-    // </div>
-    //   </StoryContextProvider>
-    // </Router>
-    
 
       <Router>
         <StoryContextProvider>
@@ -37,7 +24,19 @@ function App() {
                 <ViewStoryRoute />
               </Route>
             </Switch>
-            <StoriesRoute />
+            <Switch>
+              <Route path="/Stories">
+              <StoriesRoute />
+
+            </Route>
+            </Switch>
+            <Switch>
+              <Route path="/Create">
+              {/* <CreateStoryRoute /> */}
+
+            </Route>
+            </Switch>
+           
           </div>
         </StoryContextProvider>
       </Router>
