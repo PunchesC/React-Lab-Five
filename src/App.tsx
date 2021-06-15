@@ -5,41 +5,37 @@ import './App.css';
 import Pepsi from './Components/Coke'
 import Coke from'./Components/Pepsi'
 import {StoryContextProvider} from "./Context/stories-context";
-import {StoriesRoute} from "./Components/StoriesRoute"
-import ViewStoryRoute from "./Components/ViewStoryRoute"
-import CreateStoryRoute from './Components/CreateStoryRoute';
+import {StoriesRoute} from "./Routes/StoriesRoute"
+import ViewStoryRoute from "./Routes/ViewStoryRoute"
+import CreateStoryRoute from './Routes/CreateStoryRoute';
+import {Story} from './model/Story'
+
+
 function App() {
   return (
   
 
-      <Router>
-        <StoryContextProvider>
-          <div className="App">
-          <nav>
-            <NavLink to="/stories">See Saved Stories</NavLink>{' '}
-            <NavLink to="/Create">Create a New Story</NavLink>
-          </nav>
-            <Switch>
-              <Route path="/stories/:num">
-                <ViewStoryRoute />
-              </Route>
-            </Switch>
-            <Switch>
-              <Route path="/Stories">
-              <StoriesRoute />
-
-            </Route>
-            </Switch>
-            <Switch>
-              <Route path="/Create">
-              {/* <CreateStoryRoute /> */}
-
-            </Route>
-            </Switch>
-           
-          </div>
-        </StoryContextProvider>
-      </Router>
+    <div className="App">
+    <Router>
+      <StoryContextProvider>
+        <h1>GC Mad Libs</h1>
+        <nav>
+          <Link to="/stories">See Saved Stories</Link >{" "}
+          <Link to="/create-story">Create a New Story</Link>
+        </nav>
+        <Switch>
+          <Route path="/stories/:num" exact>
+            <ViewStoryRoute />
+          </Route>
+          <Route path="/create-story" exact>
+            <CreateStoryRoute />
+          </Route>
+        </Switch>
+        <StoriesRoute />
+        
+      </StoryContextProvider>
+    </Router>
+  </div>
    
     
     
